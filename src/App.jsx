@@ -23,6 +23,10 @@ function App() {
     setInputValue("");
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className="app">
       <Header />
@@ -35,8 +39,9 @@ function App() {
         />
         <button onClick={addTodo}>Add</button>
       </div>
-      <ToDoList todos={todos} />
+      <ToDoList todos={todos} deleteTodo={deleteTodo} />   {/* ✅ passed correctly */}
     </div>
   );
 }
+
 export default App;
