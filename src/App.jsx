@@ -27,6 +27,12 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const toggleComplete = (id) => {
+  setTodos(todos.map(todo =>
+    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  ));
+};
+
   return (
     <div className="app">
       <Header />
@@ -39,7 +45,7 @@ function App() {
         />
         <button onClick={addTodo}>Add</button>
       </div>
-      <ToDoList todos={todos} deleteTodo={deleteTodo} />   {/* ✅ passed correctly */}
+      <ToDoList todos={todos} deleteTodo={deleteTodo} toggleComplete={toggleComplete}  /> 
     </div>
   );
 }
